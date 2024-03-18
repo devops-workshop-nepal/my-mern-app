@@ -5,8 +5,16 @@ on:
     branches:
       - main
 
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches:
+#       - main
+#     paths:
+#       - 'COLLABORATOR.txt'
+#       - 'scripts/**'
 jobs:
-  add_member:
+  add-collaborator:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,7 +26,6 @@ jobs:
           gh-cli-version: 2.32.0 # optional, see action.yml for current default
 
       - name: Add member to repository
-        working-directory: .github/ci-scripts
         run: |
           ./scripts/add-collaborator-to-repository.sh
         
