@@ -22,5 +22,8 @@ role=${4-push}
 # https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator
 while read user
 do
-gh api --method PUT "repos/$org/$repo/collaborators/$user" -f permission="push"
+echo "Sending invitation to $user ..."
+gh api --method PUT "repos/$org/$repo/collaborators/$user" -f permission="push" >/dev/null 2>&1
+[ $? -eq 0 ] && echo PASSED || echo FAILED
+
 done< COLLABORATOR.txt
