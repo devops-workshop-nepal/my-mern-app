@@ -28,5 +28,7 @@ jobs:
       - name: Add member to repository
         run: |
           ./scripts/add-collaborator-to-repository.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
