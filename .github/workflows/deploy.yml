@@ -1,11 +1,8 @@
 name: Build and upload docker image
 on:
-  pull_request:
-    branches:
-      - "master"
   push:
-    branches:
-      - '**'
+    tags:
+      - '*'
 
       
 jobs:
